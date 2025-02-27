@@ -185,7 +185,7 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
         </div>
       ) : assistantExists ? (
         <div className="w-full max-w-6xl xl:max-w-7xl">
-          <h1 className="text-2xl font-bold mb-4 text-indigo-900 dark:text-indigo-100"><a className="flex items-center justify-center h-full font-racing text-4xl">{assistantName}</a></h1>
+          <h1 className="text-2xl font-bold mb-4 text-indigo-900 dark:text-indigo-100"><a className="flex items-center justify-center h-full font-racing text-4xl text-gray-700">{assistantName}</a></h1>
           <ModelButtons></ModelButtons>
           <div className="flex flex-col gap-4">
             <div className="w-full">
@@ -207,7 +207,7 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
                         )}
                       </div>
                       <span className={`inline-block p-2 rounded-lg ${
-                        message.role === 'user' ? 'bg-indigo-500 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                        message.role === 'user' ? 'bg-gray-300 dark:bg-gray-800 text-black dark:text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
                       } max-w-[80%] break-words`}>
                         <ReactMarkdown
                           components={{
@@ -244,13 +244,13 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  className="flex-grow p-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="flex-grow p-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-black"
                   placeholder="Type your message..."
                   disabled={isStreaming}
                 />
                 <button
                   type="submit"
-                  className="bg-indigo-500 text-white p-2 rounded-r-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="bg-gray-700 text-white p-2 rounded-r-lg hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   disabled={isStreaming}
                 >
                   {isStreaming ? 'Streaming...' : 'Send'}
