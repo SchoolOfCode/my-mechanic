@@ -5,6 +5,7 @@ import { readStreamableValue } from 'ai/rsc';
 import { chat } from './actions';
 import ReactMarkdown from 'react-markdown';
 import AssistantFiles from './components/AssistantFiles';
+import ModelButtons from './components/ModelButtons';
 import { File, Reference, Message } from './types';
 import { v4 as uuidv4 } from 'uuid'; 
 
@@ -185,6 +186,7 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
       ) : assistantExists ? (
         <div className="w-full max-w-6xl xl:max-w-7xl">
           <h1 className="text-2xl font-bold mb-4 text-indigo-900 dark:text-indigo-100"><a href="https://www.pinecone.io/blog/pinecone-assistant/" target="_blank" rel="noopener noreferrer" className="hover:underline">Pinecone Assistant</a>: {assistantName} <span className="text-green-500">●</span></h1>
+          <ModelButtons></ModelButtons>
           <div className="flex flex-col gap-4">
             <div className="w-full">
               <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg mb-4 h-[calc(100vh-500px)] overflow-y-auto">
