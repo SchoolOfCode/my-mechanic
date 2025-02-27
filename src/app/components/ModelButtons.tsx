@@ -9,7 +9,11 @@ export default function ModelButtons() {
           <section className="mb-8 rounded-lg bg-white dark:bg-gray-800 p-4 bg-opacity-80 p-8 text-center shadow-lg h-[calc(100vw-50%)] overflow-y-auto">
 
             <div className="flex justify-center gap-16">
-              <Link href="#hyundai" className="group">
+            <button
+                type="button"
+                className="group flex flex-col items-center"
+                onClick={() => console.log("Hyundai selected")}
+              >
                 <div className="flex h-24 w-24 items-center justify-center rounded-md border-4 border-zinc-800 bg-white p-2 shadow-md transition-all hover:shadow-lg md:h-28 md:w-28">
                   <Image
                     src="/hyundai-logo-natural.png"
@@ -20,9 +24,13 @@ export default function ModelButtons() {
                   />
                 </div>
                 <p className="mt-2 font-medium text-zinc-800"></p>
-              </Link>
+                </button>
 
-              <Link href="#seat" className="group">
+                <button
+                type="button"
+                className="group flex flex-col items-center"
+                onClick={() => console.log("Seat selected")}
+              >
                 <div className="flex h-24 w-24 items-center justify-center rounded-md border-4 border-zinc-800 bg-white p-2 shadow-md transition-all hover:shadow-lg md:h-28 md:w-28">
                   <Image
                     src="/seat-logo-natural.png"
@@ -33,7 +41,7 @@ export default function ModelButtons() {
                   />
                 </div>
                 <p className="mt-2 font-medium text-zinc-800"></p>
-              </Link>
+              </button>
             </div>
           </section>
         </main>
