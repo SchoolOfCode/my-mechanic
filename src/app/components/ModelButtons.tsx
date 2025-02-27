@@ -6,7 +6,7 @@ export default function ModelButtons() {
     //   <div className="container mx-auto px-4 py-12">
 
         <main className="mx-auto max-w">
-          <section className="mb-8 rounded-lg bg-white dark:bg-gray-800 p-4 bg-opacity-80 p-8 text-center shadow-lg h-[calc(100vw-50%)] overflow-y-auto">
+          <section className="mb-8 rounded-lg bg-white dark:bg-gray-800 p-4 bg-opacity-70 dark:bg-opacity-70 p-8 text-center shadow-lg h-[calc(100vw-50%)] overflow-y-auto">
 
             <div className="flex justify-center gap-16">
             <button

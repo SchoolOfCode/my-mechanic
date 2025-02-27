@@ -162,10 +162,10 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-8 bg-gray-50 dark:bg-gray-900">
+    <main className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-8 bg-gray-50 dark:bg-gray-900 bg-cover bg-center" style={{ backgroundImage: 'url(/clean-garage-bg.jpg)' }}>
       <button
         onClick={toggleDarkMode}
-        className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+        className="absolute top-4 right-4 p-2 rounded-full bg-opacity-70 dark:bg-opacity-70 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
         aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
       >
         {darkMode ? (
@@ -185,11 +185,11 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
         </div>
       ) : assistantExists ? (
         <div className="w-full max-w-6xl xl:max-w-7xl">
-          <h1 className="text-2xl font-bold mb-4 text-indigo-900 dark:text-indigo-100"><a className="flex items-center justify-center h-full">{assistantName}</a></h1>
+          <h1 className="text-2xl font-bold mb-4 text-indigo-900 dark:text-indigo-100"><a className="flex items-center justify-center h-full font-racing text-4xl">{assistantName}</a></h1>
           <ModelButtons></ModelButtons>
           <div className="flex flex-col gap-4">
             <div className="w-full">
-              <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg mb-4 h-[calc(100vh-500px)] overflow-y-auto">
+              <div className="bg-white dark:bg-gray-800 p-4 bg-opacity-70 dark:bg-opacity-70 rounded-lg shadow-lg mb-4 h-[calc(100vh-500px)] overflow-y-auto">
                 {messages.map((message, index) => (
                   <div key={index} className={`mb-2 flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div className={`flex items-start ${message.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
