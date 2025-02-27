@@ -185,7 +185,7 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
         </div>
       ) : assistantExists ? (
         <div className="w-full max-w-6xl xl:max-w-7xl">
-          <h1 className="text-2xl font-bold mb-4 text-indigo-900 dark:text-indigo-100"><a className="flex items-center justify-center h-full font-racing text-4xl text-gray-700">{assistantName}</a></h1>
+          <h1 className="text-2xl font-bold mb-4 text-indigo-900 dark:text-indigo-100"><a className="flex items-center justify-center h-full font-racing text-5xl text-gray-700">{assistantName}</a></h1>
           <ModelButtons></ModelButtons>
           <div className="flex flex-col gap-4">
             <div className="w-full">
