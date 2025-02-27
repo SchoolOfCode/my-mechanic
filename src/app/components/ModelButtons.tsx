@@ -12,27 +12,27 @@ export default function ModelButtons() {
               <Link href="#hyundai" className="group">
                 <div className="flex h-24 w-24 items-center justify-center rounded-md border-4 border-zinc-800 bg-white p-2 shadow-md transition-all hover:shadow-lg md:h-28 md:w-28">
                   <Image
-                    src=""
+                    src="/hyundai-logo-natural.png"
                     alt="Hyundai Logo"
-                    width={80}
+                    width={155}
                     height={80}
                     className="transition-transform group-hover:scale-110"
                   />
                 </div>
-                <p className="mt-2 font-medium text-zinc-800">HYUNDAI</p>
+                <p className="mt-2 font-medium text-zinc-800"></p>
               </Link>
 
               <Link href="#seat" className="group">
                 <div className="flex h-24 w-24 items-center justify-center rounded-md border-4 border-zinc-800 bg-white p-2 shadow-md transition-all hover:shadow-lg md:h-28 md:w-28">
                   <Image
-                    src="/seat-logo-80px.png"
+                    src="/seat-logo-natural.png"
                     alt="Seat Logo"
                     width={80}
                     height={80}
                     className="transition-transform group-hover:scale-110"
                   />
                 </div>
-                <p className="mt-2 font-medium text-zinc-800">SEAT</p>
+                <p className="mt-2 font-medium text-zinc-800"></p>
               </Link>
             </div>
           </section>
