@@ -39,6 +39,10 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
     }
   }, []);
 
+  const clearChat = () => {
+    setMessages([]);
+  };
+
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     if (typeof window !== 'undefined') {
@@ -162,19 +166,44 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-8 bg-gray-50 dark:bg-gray-900 bg-cover bg-center" style={{ backgroundImage: 'url(/clean-garage-bg.jpg)' }}>
+    <main
+      className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-8 bg-gray-50 dark:bg-gray-900 bg-cover bg-center"
+      style={{ backgroundImage: "url(/clean-garage-bg.jpg)" }}
+    >
       <button
         onClick={toggleDarkMode}
         className="absolute top-4 right-4 p-2 rounded-full bg-opacity-70 dark:bg-opacity-70 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
         aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
       >
         {darkMode ? (
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            />
           </svg>
         ) : (
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
           </svg>
         )}
       </button>
@@ -185,19 +214,42 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
         </div>
       ) : assistantExists ? (
         <div className="w-full max-w-6xl xl:max-w-7xl">
-          <h1 className="text-2xl font-bold mb-4 text-indigo-900 dark:text-indigo-100"><a className="flex items-center justify-center h-full font-racing text-5xl text-gray-700">{assistantName}</a></h1>
+          <h1 className="text-2xl font-bold mb-4 text-indigo-900 dark:text-indigo-100">
+            <a className="flex items-center justify-center h-full font-racing text-5xl text-gray-700">
+              {assistantName}
+            </a>
+          </h1>
           <ModelButtons></ModelButtons>
           <div className="flex flex-col gap-4">
             <div className="w-full">
-              <div className="bg-white dark:bg-gray-800 p-4 bg-opacity-70 dark:bg-opacity-70 rounded-lg shadow-lg mb-4 h-[calc(100vh-500px)] overflow-y-auto">
+              <div className="bg-white dark:bg-gray-800 p-4 bg-opacity-70 dark:bg-opacity-70 rounded-lg shadow-lg mb-4 h-[calc(100vh-400px)] overflow-y-auto">
                 {messages.map((message, index) => (
-                  <div key={index} className={`mb-2 flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                    <div className={`flex items-start ${message.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
-                      <div className={`${message.role === 'user' ? 'ml-2' : 'mr-2'}`}>
-                        {message.role === 'user' ? (
+                  <div
+                    key={index}
+                    className={`mb-2 flex ${
+                      message.role === "user" ? "justify-end" : "justify-start"
+                    }`}
+                  >
+                    <div
+                      className={`flex items-start ${
+                        message.role === "user"
+                          ? "flex-row-reverse"
+                          : "flex-row"
+                      }`}
+                    >
+                      <div
+                        className={`${
+                          message.role === "user" ? "ml-2" : "mr-2"
+                        }`}
+                      >
+                        {message.role === "user" ? (
                           <span className="text-2xl">👤</span>
                         ) : (
-                          <a href="https://www.pinecone.io/blog/pinecone-assistant/" target="_blank" rel="noopener noreferrer">
+                          <a
+                            href="https://www.pinecone.io/blog/pinecone-assistant/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             <img
                               src="/pinecone-logo.png"
                               alt="Pinecone Assistant"
@@ -206,13 +258,20 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
                           </a>
                         )}
                       </div>
-                      <span className={`inline-block p-2 rounded-lg ${
-                        message.role === 'user' ? 'bg-gray-300 dark:bg-gray-800 text-black dark:text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
-                      } max-w-[80%] break-words`}>
+                      <span
+                        className={`inline-block p-2 rounded-lg ${
+                          message.role === "user"
+                            ? "bg-gray-300 dark:bg-gray-800 text-black dark:text-white"
+                            : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                        } max-w-[80%] break-words`}
+                      >
                         <ReactMarkdown
                           components={{
                             a: ({ node, ...props }) => (
-                              <a {...props} className="text-blue-600 dark:text-blue-400 hover:underline">
+                              <a
+                                {...props}
+                                className="text-blue-600 dark:text-blue-400 hover:underline"
+                              >
                                 🔗 {props.children}
                               </a>
                             ),
@@ -225,7 +284,12 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
                             <ul>
                               {message.references.map((ref, i) => (
                                 <li key={i}>
-                                  <a href={ref.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
+                                  <a
+                                    href={ref.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                                  >
                                     {ref.name}
                                   </a>
                                 </li>
@@ -239,7 +303,13 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
                 ))}
                 <div ref={messagesEndRef} />
               </div>
-              <form onSubmit={(e) => { e.preventDefault(); handleChat(); }} className="flex mb-4">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleChat();
+                }}
+                className="flex mb-4"
+              >
                 <input
                   type="text"
                   value={input}
@@ -253,14 +323,22 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
                   className="bg-gray-700 text-white p-2 rounded-r-lg hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   disabled={isStreaming}
                 >
-                  {isStreaming ? 'Streaming...' : 'Send'}
+                  {isStreaming ? "Streaming..." : "Send"}
                 </button>
               </form>
               {error && (
                 <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4 rounded-md shadow-md">
                   <div className="flex items-center">
-                    <svg className="h-6 w-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    <svg
+                      className="h-6 w-6 mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                     <p className="font-semibold">Error</p>
                   </div>
@@ -268,9 +346,20 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
                 </div>
               )}
             </div>
+            <div className="flex justify-center">
+              <button
+                onClick={clearChat}
+                className="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+              >
+                Clear Chat
+              </button>
+            </div>
             {showAssistantFiles && (
               <div className="w-full">
-                <AssistantFiles files={files} referencedFiles={referencedFiles} />
+                <AssistantFiles
+                  files={files}
+                  referencedFiles={referencedFiles}
+                />
               </div>
             )}
           </div>
@@ -278,8 +367,16 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
       ) : (
         <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-md shadow-md max-w-2xl">
           <div className="flex items-center">
-            <svg className="h-6 w-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+            <svg
+              className="h-6 w-6 mr-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                clipRule="evenodd"
+              />
             </svg>
             <p className="font-semibold">Error</p>
           </div>
@@ -287,18 +384,44 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
           <div className="mt-4 text-sm">
             <p className="font-semibold">To resolve this issue:</p>
             <ol className="list-decimal list-inside mt-2 space-y-2">
-              <li>Create a Pinecone Assistant at <a href="https://app.pinecone.io" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">https://app.pinecone.io</a></li>
-              <li>Export the environment variable <code className="bg-red-200 px-1 rounded">PINECONE_ASSISTANT_NAME</code> with the value of your assistant&apos;s name</li>
+              <li>
+                Create a Pinecone Assistant at{" "}
+                <a
+                  href="https://app.pinecone.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  https://app.pinecone.io
+                </a>
+              </li>
+              <li>
+                Export the environment variable{" "}
+                <code className="bg-red-200 px-1 rounded">
+                  PINECONE_ASSISTANT_NAME
+                </code>{" "}
+                with the value of your assistant&apos;s name
+              </li>
               <li>Restart your application</li>
             </ol>
           </div>
         </div>
       )}
       <div className="mt-8 text-sm text-gray-500 flex space-x-4">
-        <a href="https://www.pinecone.io/blog/pinecone-assistant/" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">
+        <a
+          href="https://www.pinecone.io/blog/pinecone-assistant/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-indigo-600 transition-colors"
+        >
           ℹ️ What are Pinecone Assistants?
         </a>
-        <a href="https://app.pinecone.io" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">
+        <a
+          href="https://app.pinecone.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-indigo-600 transition-colors"
+        >
           🤖 Create your own Pinecone Assistant today
         </a>
       </div>
