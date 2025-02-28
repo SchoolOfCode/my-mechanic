@@ -5,6 +5,7 @@ import { readStreamableValue } from 'ai/rsc';
 import { chat } from './actions';
 import ReactMarkdown from 'react-markdown';
 import AssistantFiles from './components/AssistantFiles';
+import ModelButtons from './components/ModelButtons';
 import { File, Reference, Message } from './types';
 import { v4 as uuidv4 } from 'uuid'; 
 
@@ -161,10 +162,10 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-8 bg-gray-50 dark:bg-gray-900">
+    <main className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-8 bg-gray-50 dark:bg-gray-900 bg-cover bg-center" style={{ backgroundImage: 'url(/clean-garage-bg.jpg)' }}>
       <button
         onClick={toggleDarkMode}
-        className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+        className="absolute top-4 right-4 p-2 rounded-full bg-opacity-70 dark:bg-opacity-70 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
         aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
       >
         {darkMode ? (
@@ -184,10 +185,11 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
         </div>
       ) : assistantExists ? (
         <div className="w-full max-w-6xl xl:max-w-7xl">
-          <h1 className="text-2xl font-bold mb-4 text-indigo-900 dark:text-indigo-100"><a href="https://www.pinecone.io/blog/pinecone-assistant/" target="_blank" rel="noopener noreferrer" className="hover:underline">Pinecone Assistant</a>: {assistantName} <span className="text-green-500">●</span></h1>
+          <h1 className="text-2xl font-bold mb-4 text-indigo-900 dark:text-indigo-100"><a className="flex items-center justify-center h-full font-racing text-5xl text-gray-700">{assistantName}</a></h1>
+          <ModelButtons></ModelButtons>
           <div className="flex flex-col gap-4">
             <div className="w-full">
-              <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg mb-4 h-[calc(100vh-500px)] overflow-y-auto">
+              <div className="bg-white dark:bg-gray-800 p-4 bg-opacity-70 dark:bg-opacity-70 rounded-lg shadow-lg mb-4 h-[calc(100vh-500px)] overflow-y-auto">
                 {messages.map((message, index) => (
                   <div key={index} className={`mb-2 flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div className={`flex items-start ${message.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
@@ -205,7 +207,7 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
                         )}
                       </div>
                       <span className={`inline-block p-2 rounded-lg ${
-                        message.role === 'user' ? 'bg-indigo-500 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                        message.role === 'user' ? 'bg-gray-300 dark:bg-gray-800 text-black dark:text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
                       } max-w-[80%] break-words`}>
                         <ReactMarkdown
                           components={{
@@ -242,13 +244,13 @@ export default function Home({ initialShowAssistantFiles, showCitations }: HomeP
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  className="flex-grow p-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="flex-grow p-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-black"
                   placeholder="Type your message..."
                   disabled={isStreaming}
                 />
                 <button
                   type="submit"
-                  className="bg-indigo-500 text-white p-2 rounded-r-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="bg-gray-700 text-white p-2 rounded-r-lg hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   disabled={isStreaming}
                 >
                   {isStreaming ? 'Streaming...' : 'Send'}

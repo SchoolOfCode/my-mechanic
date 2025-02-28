@@ -26,7 +26,7 @@ export default function AssistantFiles({ files, referencedFiles }: AssistantFile
   };
 
   return (
-    <div className="w-full mt-4 bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
+    <div className="w-full mt-4 bg-white dark:bg-gray-800 bg-opacity-70 dark:bg-opacity-70 shadow-md rounded-lg overflow-hidden">
       <button
         className="w-full flex justify-between items-center p-4 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
         onClick={() => setIsOpen(!isOpen)}
